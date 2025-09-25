@@ -37,27 +37,58 @@ a {
     max-width: 1000px;
   }
 }
-
-/* 🔹 Tablets en horizontal (hasta 992px) */
-@media (max-width: 992px) {
-  .container {
-    max-width: 90%;   /* usa porcentaje para mayor fluidez */
-  }
+/* Contenedor general */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
-/* 🔹 Tablets verticales y móviles (hasta 768px) */
+/* Imágenes fluidas */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Texto adaptable */
+h1 { font-size: 2.5rem; }
+p  { font-size: 1rem; line-height: 1.6; }
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablets y celulares grandes */
 @media (max-width: 768px) {
-  .container {
-    max-width: 95%;
-    padding: 0.8rem;
+  h1 { font-size: 2rem; }
+  p  { font-size: 0.95rem; }
+  .container { padding: 0.8rem; }
+  
+  .hero {
+    grid-template-columns: 1fr; /* se apilan */
+    text-align: center;
   }
 }
 
-/* 🔹 Celulares pequeños (hasta 500px) */
+/* Celulares pequeños */
 @media (max-width: 500px) {
-  .container {
-    max-width: 100%;
-    padding: 0.6rem;
+  h1 { font-size: 1.6rem; }
+  p  { font-size: 0.9rem; }
+  .container { padding: 0.6rem; }
+
+  .btn {
+    width: 100%;  /* ocupa todo el ancho */
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr; /* 1 sola columna */
+  }
+
+  .header-bg {
+    height: 200px;
+    border-radius: 0;
   }
 }
 
@@ -653,4 +684,15 @@ footer {
     border-radius: 6px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   }
+}
+/* TIPO DE DOCUMENTO */
+.label-doc {
+  font-weight: bold;       /* Negrita */
+  font-size: 16px;         /* Tamaño un poco más grande */
+  color: #1f2937;          /* Azul oscuro elegante */
+  font-family: 'Poppins', sans-serif; /* Fuente moderna */
+  margin-right: 8px;       /* Espacio con el select */
+}
+.label-doc {
+  font-weight: bold;
 }
