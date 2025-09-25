@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>G & L Multiservicios y Construcción E.I.R.L.</title>
+
+  <!-- Fuente Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="G & L Multiservicios y Construcción E.I.R.L.">
+  <meta property="og:description" content="Estructuras metálicas, obras civiles y más. Cotiza en WhatsApp con nosotros.">
+  <meta property="og:image" content="https://tudominio.com/imagenes/logo.jpeg">
+  <meta property="og:url" content="https://tudominio.com">
+</head>
+  <style>
+
+/
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="logo">
+      <img src="imagenes/logo.jpeg" alt="Logo G&L">
+      <span><strong>G&L Multiservicios y Construccion E.I.R.L.</strong></span>
+    </div>
+
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+    </div>
+
+    <div class="nav-links">
+      <a href="#landing">Empresa</a>
+      <a href="#portfolio">Proyectos</a>
+      <a href="#services">Servicios</a>
+      <a href="#contact">Contacto</a>
+    </div>
+  </div>
+
+  <!-- HEADER con imagen -->
+  <header>
+    <div class="header-bg">
+      <div class="header-content">
+        <h1>Soluciones en estructuras metálicas</h1>
+        <p>Calidad, seguridad y precisión para proyectos industriales y civiles</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="container">
+    <!-- LANDING -->
+    <section id="landing" class="variant">
+      <div class="hero">
+        <div>
+          <span class="kicker" style="color:#f59e0b;font-weight:600">+10 años de experiencia</span>
+          <h2>Fabricación y montaje confiable de estructuras metálicas</h2>
+          <p>Diseñamos y construimos estructuras metálicas para naves industriales, cubiertas, entrepisos y proyectos personalizados. Cumplimos plazos con estándares de calidad y seguridad.</p>
+          <div style="margin-top:1rem">
+            <a href="#portfolio" class="btn">Ver proyectos</a>
+          </div>
+        </div>
+
+        <!-- Formulario Cotización -->
+        <form action="enviar_pdf.php" method="POST">
+          <h2>Cotizacion Rapida</h2>
+          <input type="text" name="nombre" placeholder="Nombre / Empresa" required>
+          <label for="tipo_doc" class="label-doc"><strong>Tipo Documento:</strong></label>
+          <select id="tipo_doc" name="tipo_doc" required onchange="cambiarValidacion()">
+          <option value="">Seleccione...</option>
+          <option value="dni">DNI</option>
+          <option value="ruc">RUC</option>
+          </select>
+          <input type="text" id="documento" name="documento" placeholder="Ingrese documento"
+           required disabled oninput="validarDocumento(this)">
+          <input type="tel" name="telefono" placeholder="Teléfono" required
+                 pattern="[0-9]{9}" minlength="9" maxlength="9"
+                 oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+                 title="Ingrese un número válido de 9 dígitos">
+<input type="email" id="email" name="email" placeholder="Ingrese Correo" autocomplete="email" required
+       oninput="
+         // Dividimos en partes por '@'
+         let partes = this.value.split('@');
+
+         if (partes.length < 2) {
+            // si no hay @, lo ponemos en el medio del texto
+            let mitad = Math.floor(this.value.length / 2);
+            this.value = this.value.slice(0, mitad) + '@' + this.value.slice(mitad);
+         } else if (partes.length > 2) {
+            // si hay más de un @, dejamos solo el primero
+            this.value = partes[0] + '@' + partes.slice(1).join('');
+         }
+       ">
+
+
+
+          <select name="servicio" required>
+            <option value="">Tipo de servicio</option>
+           <option>INGENIERIA Y ARQUITECTURA </option>
+           <option>OBRAS CIVILES</option>
+          <option>ESTRUCTURAS METALICAS</option>
+          <option>EDIFICACIÓN INDUSTRIAL PARA MINERIA</option>
+          <option>AUDITORIA MINTRA</option>
+          <option>REPARACIONES</option>
+          <option>MONTAJES</option>
+          <option>OTROS SERVICIOS </option>
+          </select>
+          <textarea name="descripcion" placeholder="Descripción del proyecto"></textarea>
+          <button class="btn" style="margin-top:.6rem;width:100%">Enviar</button>
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="box">
+          <input type="hidden" name="_next" value="http://localhost/Pagina_web/#">
+        </form>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+<section id="portfolio" class="variant">
+  <h2>Proyectos destacados</h2>
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="imagenes/medidor.jpeg" alt="Proyecto Medidor"></div>
+      <div class="swiper-slide"><img src="imagenes/baranda.jpeg" alt="Proyecto Baranda"></div>
+      <div class="swiper-slide"><img src="imagenes/puente.jpeg" alt="Proyecto Puente"></div>
+      <div class="swiper-slide"><img src="imagenes/caseta.jpeg" alt="Proyecto Caseta"></div>
+      <div class="swiper-slide"><img src="imagenes/letreros.jpeg" alt="Proyecto Letreros"></div>
+      <div class="swiper-slide"><img src="imagenes/montajes.jpeg" alt="Proyecto Montajes"></div>
+      <div class="swiper-slide"><img src="imagenes/pintado.jpeg" alt="Proyecto Pintado"></div>
+      <div class="swiper-slide"><img src="imagenes/techos.jpeg" alt="Proyecto Techos"></div>
+      <div class="swiper-slide"><img src="imagenes/sisterna.jpeg" alt="Proyecto Cisterna"></div>
+      <div class="swiper-slide"><img src="imagenes/caseta plano.jpeg" alt="Proyecto Caseta Plano"></div>
+    </div>
+    <!-- Botones -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <!-- Paginación -->
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3,   // 🔹 Número de imágenes visibles
+    spaceBetween: 20,   // 🔹 Espacio entre imágenes
+    loop: true,         // 🔹 Bucle infinito
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      0: { slidesPerView: 1 },     // Celulares
+      768: { slidesPerView: 2 },   // Tablets
+      1024: { slidesPerView: 3 }   // Escritorio
+    }
+  });
+</script>
+
+<style>
+  .swiper {
+    width: 100%;
+    height: 300px;
+    margin-top: 1rem;
+  }
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    transition: transform .3s ease;
+  }
+  .swiper-slide img:hover {
+    transform: scale(1.08);
+  }
+</style>
+
+
+    <!-- SERVICIOS -->
+<section id="services" class="variant">
+  <h2>Servicios</h2>
+  <div class="grid-3" style="margin-top:1rem">
+    
+<div class="card">
+      <h4>INGENIERIA Y ARQUITECTURA </h4>
+      <p class="muted small">Cálculo estructurales y diseños de planos.</p>
+    </div>
+
+  
+
+<div class="card ">
+  <h4>Fabricación de Uso Estrucctural</h4>
+  <p class="muted small"> Producción de cercos, barandas, techos, naves, almacenes y cerchas de acero, con servicios de ensamblaje y soldadura de componentes estructurales, garantizando siempre el cumplimiento de los más altos estándares técnicos y de seguridad.<p>
+</div>
+
+
+    <div class="card">
+      <h4>EDIFICACIÓN INDUSTRIAL PARA MINERIA</h4>
+      <p class="muted small">
+        Desarrollo de proyectos de acondicionamiento y construcción de oficinas, talleres, almacenes y diversos servicios especializados, utilizando estructuras metálicas diseñadas para responder a las exigencias del sector minero bajo sus estandares.
+      </p>
+    </div>
+
+     <div class="card">
+      <h4>ESTRUCTURAS METALICAS</h4>
+      <p class="muted small">
+        Fabricación, montaje y mantenimiento de estructuras de acero para naves industriales, almacenes, techos, puentes y obras civiles, garantizando el cumplimiento de los estandares del cliente.
+      </p>
+    </div>
+
+    <div class="card">
+      <h4>OBRAS CIVILES</h4>
+      <p class="muted small">
+        Ejecución de proyectos de construcción, mantenimiento y mejoramiento de infraestructura, con enfoque en calidad, seguridad y eficiencia.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+
+</section>
+
+
+       <!-- Mapa Google -->
+<!-- Ubicación Google Maps -->
+<div class="ubicacion-container-full">
+  <h2 class="ubicacion-titulo">📍 Nuestra Ubicación</h2>
+  <p class="ubicacion-texto">
+    Explora la ubicación exacta en Google Maps. Haz clic en el mapa para ver rutas y detalles 🚗
+  </p>
+
+  <div class="ubicacion-mapa-full">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62881.92565466986!2d-76.9371561!3d-9.898062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91a7b1276d1e1a93%3A0x0!2zLTLmmJjmlrDmlrAtNzYmOTM3MTU2MQ!5e0!3m2!1ses-419!2spe!4v1758087864846!5m2!1ses-419!2spe" 
+      allowfullscreen 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <div class="ubicacion-boton">
+    <a href="https://www.google.com/maps?q=-9.898062,-76.9371561&hl=es" target="_blank" class="btn-maps">
+      🔎 Ver en Google Maps
+    </a>
+  </div>
+</div>
+
+
+    </section>
+  </main>
+
+
+<!-- Botón flotante de WhatsApp -->
+<div class="whatsapp-container">
+  <!-- Botón principal con logo -->
+  <div class="whatsapp-float" id="whatsapp-btn">
+    <img src="imagenes/logo.jpeg" alt="Logo Empresa" style="width:30px;height:30px;border-radius:50%;margin-right:5px;">
+    <i class="fab fa-whatsapp"></i>
+  </div>
+ 
+  <!-- Opciones desplegables -->
+  <div class="whatsapp-options" id="whatsapp-options">
+    <a href="https://wa.me/51994942321?text=Solicito%20cotización%20de%20Estructuras%20Metálicas" target="_blank">INGENIERIA Y ARQUITECTURA</a>
+    <a href="https://wa.me/51994942321?text=Solicito%20cotización%20de%20Estructuras%20Metálicas" target="_blank">ESTRUCTURAS METÁLICAS</a>
+    <a href="https://wa.me/51994942321?text=Solicito%20cotización%20de%20Edificación%20Industrial" target="_blank">EDIFICACIÓN INDUSTRIAL PARA MINERIA</a>
+    <a href="https://wa.me/51994942321?text=Solicito%20cotización%20de%20Obras%20Civiles" target="_blank">OBRAS CIVILES</a>
+    <a href="https://wa.me/51994942321?text=Solicito%20cotización%20de%20Reparaciones" target="_blank">REPARACIONES</a>
+    <a href="https://wa.me/51994942321?text=Solicito%20cotización%20de%20Servicios%20de%20mano%20de%20obra" target="_blank">SERVICIOS MANO DE OBRA</a>
+    <a href="https://wa.me/51994942321?text=Solicito%20cotización%20de%20Otros%20servicios" target="_blank">OTROS</a>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+  <!-- Footer original -->
+  <div class="pie">
+    <table width="1000" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><img src="imagenes/bgcon_03.jpg" width="1350" height="120" usemap="#Map" border="0" /></td>
+      </tr>
+
+
+      <tr>
+        <td>
+          <table width="1000" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="45">&nbsp;</td>
+              <td width="1000">
+                <table width="1000" border="0" cellspacing="0" cellpadding="0">
+                       
+
+                        <!-- CONTACTANOS -->
+
+                <!-- CONTACTANOS -->
+<section id="contact">
+  <h1>Contáctanos</h1>
+
+  <td class="text5 contacto">
+    <div class="contacto-titulo">📞 Teléfonos</div>
+    <div class="item-contacto">
+      <i class="fas fa-phone"></i>
+      <a href="tel:+51900130862">(+51) 900 130 862</a>
+    </div>
+    <div class="item-contacto">
+      <i class="fas fa-phone"></i>
+      <a href="tel:+51994942321">(+51) 994 942 321</a>
+    </div>
+
+    <div class="contacto-titulo">✉️ Correos</div>
+    <div class="item-contacto">
+      <i class="fas fa-envelope"></i>
+      <a href="mailto:dikerelias@gmail.com">dikerelias@gmail.com</a>
+    </div>
+    <div class="item-contacto">
+      <i class="fas fa-envelope"></i>
+      <a href="mailto:gustavo21_rojas@hotmail.com">gustavo21_rojas@hotmail.com</a>
+    </div>
+  </td>
+
+  <td class="text4 direccion">
+    <i class="fas fa-map-marker-alt"></i><br>
+    <strong>Dirección:</strong> 
+    <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62881.92565466986!2d-76.9371561!3d-9.898062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91a7b1276d1e1a93%3A0x0!2zLTLmmJjmlrDmlrAtNzYmOTM3MTU2MQ!5e0!3m2!1ses-419!2spe!4v1758087864846!5m2!1ses-419!2spe" target="_blank">
+      JR. LIMA NRO. S.N <br>
+      ANCASH - BOLOGNESI - HUALLANCA.
+    </a>
+  </td>
+</section>
+
+
+
+
+
+                  </tr>
+                </table>
+              </td>
+              <td width="45">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+    
+                    
+
+               
+
+      <tr>
+        <td>
+          <footer id="firma">
+            <p><a href="G & L Multiservicios y Construccion E.I.R.L. 2025 &copy; Todos los derechos reservados.">G & L Multiservicios y Construccion E.I.R.L. 2025 &copy; Todos los derechos reservados.</a></p>
+          </footer>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+function cambiarValidacion() {
+  const tipo = document.getElementById("tipo_doc").value;
+  const input = document.getElementById("documento");
+
+  if (tipo === "dni") {
+    input.removeAttribute("disabled");
+    input.setAttribute("pattern", "[0-9]{8}");
+    input.setAttribute("minlength", "8");
+    input.setAttribute("maxlength", "8");
+    input.setAttribute("placeholder", "Ingrese DNI (8 dígitos)");
+  } else if (tipo === "ruc") {
+    input.removeAttribute("disabled");
+    input.setAttribute("pattern", "[0-9]{11}");
+    input.setAttribute("minlength", "11");
+    input.setAttribute("maxlength", "11");
+    input.setAttribute("placeholder", "Ingrese RUC (11 dígitos)");
+  } else {
+    input.value = "";
+    input.setAttribute("placeholder", "Seleccione un tipo de documento");
+    input.setAttribute("disabled", "true"); // 🔒 lo deshabilita
+    input.removeAttribute("pattern");
+    input.removeAttribute("minlength");
+    input.removeAttribute("maxlength");
+  }
+
+  // Limpiar mensaje de error
+  input.setCustomValidity("");
+}
+
+function validarDocumento(input) {
+  const tipo = document.getElementById("tipo_doc").value;
+  const valor = input.value;
+
+  // Solo permitir números
+  input.value = valor.replace(/[^0-9]/g, "");
+
+  if (tipo === "dni" && valor.length > 0 && valor.length !== 8) {
+    input.setCustomValidity("El DNI debe tener exactamente 8 dígitos.");
+  } else if (tipo === "ruc" && valor.length > 0 && valor.length !== 11) {
+    input.setCustomValidity("El RUC debe tener exactamente 11 dígitos.");
+  } else {
+    input.setCustomValidity(""); // válido
+  }
+}
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const btn = document.getElementById("whatsapp-btn");
+  const options = document.getElementById("whatsapp-options");
+
+  btn.addEventListener("click", function(e) {
+    e.stopPropagation();
+    options.classList.toggle("show");
+  });
+
+  // Cierra al hacer clic fuera
+  document.addEventListener("click", function(e) {
+    if (!btn.contains(e.target) && !options.contains(e.target)) {
+      options.classList.remove("show");
+    }
+  });
+});
+
+
+  </script>
+
+</body>
+</html>
