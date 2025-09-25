@@ -64,7 +64,6 @@ header {
 }
 
 .header-bg {
-  background: url('') center/cover no-repeat;
   height: 600px;
   display: flex;
   flex-direction: column;
@@ -477,3 +476,4 @@ footer {
     font-size: 26px;
   }
 }
+
