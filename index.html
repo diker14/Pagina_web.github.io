@@ -11,6 +11,9 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
   <!-- CSS -->
   <link rel="stylesheet" href="css/styles.css">
 
@@ -77,14 +80,35 @@
         <form action="enviar_pdf.php" method="POST">
           <h2>Cotizacion Rapida</h2>
           <input type="text" name="nombre" placeholder="Nombre / Empresa" required>
-          <input type="text" name="dni" placeholder="D.N.I. / R.U.C." required
-                 pattern="[0-9]{11}" minlength="11" maxlength="11"
-                 oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+          <label for="tipo_doc" class="label-doc"><strong>Tipo Documento:</strong></label>
+          <select id="tipo_doc" name="tipo_doc" required onchange="cambiarValidacion()">
+          <option value="">Seleccione...</option>
+          <option value="dni">DNI</option>
+          <option value="ruc">RUC</option>
+          </select>
+          <input type="text" id="documento" name="documento" placeholder="Ingrese documento"
+           required disabled oninput="validarDocumento(this)">
           <input type="tel" name="telefono" placeholder="Teléfono" required
                  pattern="[0-9]{9}" minlength="9" maxlength="9"
                  oninput="this.value=this.value.replace(/[^0-9]/g,'')"
                  title="Ingrese un número válido de 9 dígitos">
-          <input type="email" name="email" placeholder="@gmail.com" autocomplete="email" required>
+<input type="email" id="email" name="email" placeholder="Ingrese Correo" autocomplete="email" required
+       oninput="
+         // Dividimos en partes por '@'
+         let partes = this.value.split('@');
+
+         if (partes.length < 2) {
+            // si no hay @, lo ponemos en el medio del texto
+            let mitad = Math.floor(this.value.length / 2);
+            this.value = this.value.slice(0, mitad) + '@' + this.value.slice(mitad);
+         } else if (partes.length > 2) {
+            // si hay más de un @, dejamos solo el primero
+            this.value = partes[0] + '@' + partes.slice(1).join('');
+         }
+       ">
+
+
+
           <select name="servicio" required>
             <option value="">Tipo de servicio</option>
            <option>INGENIERIA Y ARQUITECTURA </option>
@@ -370,6 +394,53 @@
   </div>
 
   <script>
+function cambiarValidacion() {
+  const tipo = document.getElementById("tipo_doc").value;
+  const input = document.getElementById("documento");
+
+  if (tipo === "dni") {
+    input.removeAttribute("disabled");
+    input.setAttribute("pattern", "[0-9]{8}");
+    input.setAttribute("minlength", "8");
+    input.setAttribute("maxlength", "8");
+    input.setAttribute("placeholder", "Ingrese DNI (8 dígitos)");
+  } else if (tipo === "ruc") {
+    input.removeAttribute("disabled");
+    input.setAttribute("pattern", "[0-9]{11}");
+    input.setAttribute("minlength", "11");
+    input.setAttribute("maxlength", "11");
+    input.setAttribute("placeholder", "Ingrese RUC (11 dígitos)");
+  } else {
+    input.value = "";
+    input.setAttribute("placeholder", "Seleccione un tipo de documento");
+    input.setAttribute("disabled", "true"); // 🔒 lo deshabilita
+    input.removeAttribute("pattern");
+    input.removeAttribute("minlength");
+    input.removeAttribute("maxlength");
+  }
+
+  // Limpiar mensaje de error
+  input.setCustomValidity("");
+}
+
+function validarDocumento(input) {
+  const tipo = document.getElementById("tipo_doc").value;
+  const valor = input.value;
+
+  // Solo permitir números
+  input.value = valor.replace(/[^0-9]/g, "");
+
+  if (tipo === "dni" && valor.length > 0 && valor.length !== 8) {
+    input.setCustomValidity("El DNI debe tener exactamente 8 dígitos.");
+  } else if (tipo === "ruc" && valor.length > 0 && valor.length !== 11) {
+    input.setCustomValidity("El RUC debe tener exactamente 11 dígitos.");
+  } else {
+    input.setCustomValidity(""); // válido
+  }
+}
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
   const btn = document.getElementById("whatsapp-btn");
   const options = document.getElementById("whatsapp-options");

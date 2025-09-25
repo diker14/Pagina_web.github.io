@@ -7,7 +7,8 @@ use PHPMailer\PHPMailer\Exception;
 
 // Recibir datos del formulario
 $nombre      = $_POST['nombre'] ?? '';
-$dni     = $_POST['dni'] ?? '';
+$tipo_doc     = $_POST['tipo_doc'] ?? '';
+$documento     = $_POST['documento'] ?? '';
 $email     = $_POST['email'] ?? '';
 $telefono    = $_POST['telefono'] ?? '';
 $servicio    = $_POST['servicio'] ?? '';
@@ -111,7 +112,8 @@ h1 {
 
     <div class="section">
         <p><strong>Nombre / Empresa:</strong> '.$nombre.'</p>
-        <p><strong> Dni /Ruc:</strong> '.$dni.'</p>
+        <p><strong> Tipo Documento:</strong> '.$tipo_doc.'</p>
+        <p><strong> </strong> '.$documento.'</p>
         <p><strong>Email:</strong> '.$email.'</p>   
         <p><strong>Teléfono:</strong> '.$telefono.'</p>
         <p><strong>Servicio:</strong> '.$servicio.'</p>
@@ -153,8 +155,8 @@ try {
     $mail->addAddress('dikerelias@gmail.com');
 
     $mail->isHTML(true);
-    $mail->Subject = '📄 Nueva cotización: '.$numero_cotizacion;
-    $mail->Body    = 'Adjunto encontrarás la cotización profesional generada.';
+    $mail->Subject = ' Nueva cotizacion: '.$numero_cotizacion;
+    $mail->Body    = 'Adjunto encontrarás la cotizacion profesional generada.';
 
     $mail->addAttachment($pdfFile);
     $mail->send();
