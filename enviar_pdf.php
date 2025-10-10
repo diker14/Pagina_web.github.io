@@ -161,7 +161,7 @@ try {
     $mail->addAttachment($pdfFile);
     $mail->send();
 
-    header('Location: https://diker14.github.io/Pagina_web.github.io/#');
+    header('Location: https://diker14.github.io/Pagina_web.github.io/index.html');
     exit;
 } catch (Exception $e) {
     echo "❌ Error al enviar: {$mail->ErrorInfo}";
