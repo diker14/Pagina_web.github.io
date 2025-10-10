@@ -283,42 +283,35 @@
       breakpoints: { 0:{slidesPerView:1},768:{slidesPerView:2},1024:{slidesPerView:3} }
     });
 
-    function cambiarValidacion() {
-      const tipo = document.getElementById("tipo_doc").value;
-      const input = document.getElementById("documento");
+       function cambiarValidacion() {
+  const tipo = document.getElementById('tipo_doc').value;
+  const docInput = document.getElementById('documento');
+  
+  docInput.value = ''; // limpia el campo
+  docInput.disabled = !tipo; // habilita solo si se seleccionó algo
+  docInput.maxLength = tipo === 'dni' ? 8 : tipo === 'ruc' ? 11 : '';
+  docInput.placeholder = tipo === 'dni' ? 'Ingrese su DNI (8 dígitos)' :
+                        tipo === 'ruc' ? 'Ingrese su RUC (11 dígitos)' : 'Ingrese documento';
+}
 
-      if (tipo === "dni") {
-        input.removeAttribute("disabled");
-        input.pattern = "[0-9]{8}";
-        input.placeholder = "Ingrese DNI (8 dígitos)";
-      } else if (tipo === "ruc") {
-        input.removeAttribute("disabled");
-        input.pattern = "[0-9]{11}";
-        input.placeholder = "Ingrese RUC (11 dígitos)";
-      } else {
-        input.value = "";
-        input.placeholder = "Seleccione un tipo de documento";
-        input.disabled = true;
-      }
-    }
+function validarDocumento(input) {
+  const tipo = document.getElementById('tipo_doc').value;
+  const valor = input.value;
 
-    function validarDocumento(input) {
-      input.value = input.value.replace(/[^0-9]/g, "");
-    }
+  // Solo números
+  input.value = valor.replace(/\D/g, '');
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const btn = document.getElementById("whatsapp-btn");
-      const options = document.getElementById("whatsapp-options");
-      btn.addEventListener("click", e => {
-        e.stopPropagation();
-        options.classList.toggle("show");
-      });
-      document.addEventListener("click", e => {
-        if (!btn.contains(e.target) && !options.contains(e.target)) options.classList.remove("show");
-      });
-    });
+  if (tipo === 'dni' && valor.length === 8) {
+    input.style.borderColor = 'green';
+  } else if (tipo === 'ruc' && valor.length === 11) {
+    input.style.borderColor = 'green';
+  } else {
+    input.style.borderColor = 'red';
+  }
+}
   </script>
 
 </body>
 </html>
+
 
